@@ -26,7 +26,7 @@
 ## Usage
 Add ``Reviewable`` trait to the model where you want users to give review and ratings. As example for **Product Model** 
 
-```
+```php
 <?php 
 namespace App;
 
@@ -54,14 +54,14 @@ class Product extends Model
 
 > Example
 
-```
+```php
 $product = Product::find($id);
 $user = auth()->user();
 $product->makeReview($user,3,'Very good product!');
 ```
 
 ### Review attributes
-```
+```php
 // Get all active reviews of the product
 $product->reviews();
 

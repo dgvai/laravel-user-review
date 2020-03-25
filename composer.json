@@ -10,9 +10,7 @@
         }
     ],
     "minimum-stability": "dev",
-    "require": {
-        "dgvai/laravel-user-review" : "1.0.0"
-    },
+    "require": {},
     "autoload": {
         "psr-4": {
             "DGvai\\Review\\": "src"

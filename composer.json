@@ -10,7 +10,10 @@
         }
     ],
     "minimum-stability": "dev",
-    "require": {},
+    "require": {
+        "php": "^7.2",
+        "laravel/framework": "^5.6|^6.0|^7.0"
+    },
     "autoload": {
         "psr-4": {
             "DGvai\\Review\\": "src"

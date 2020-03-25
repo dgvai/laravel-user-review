@@ -14,7 +14,7 @@ trait Reviewable
     {
         if(!is_null($star))
         {
-            $quantity = $this->reviews()->count();
+            $quantity = $this->reviews()->where('active',1)->count();
             $total = $this->reviews()->where('active',1)->sum('rating');
 
             return ($quantity * $star) > 0 ? $total / (($quantity * $star) / 100) : 0;
@@ -46,6 +46,6 @@ trait Reviewable
 
     public function getRatingPercentAttribute()
     {
-        return $this->averageRating(5);
+        return $this->averageRating(config('user-review.star'));
     }
 }

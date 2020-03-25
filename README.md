@@ -1,5 +1,10 @@
 # Review-Ratings: Laravel Package
-### This package uses a trait for a model which can be reviewable by users and give starred/point ratings and only one reply can come from admin as a support response. (like Google playstore review system). This package can be used with any projects like Ecommerce, Shop, Store, etc models. 
+[![Latest Stable Version](https://poser.pugx.org/dgvai/laravel-user-review/v/stable)](https://packagist.org/packages/dgvai/laravel-user-review)
+[![Total Downloads](https://poser.pugx.org/dgvai/laravel-user-review/downloads)](https://packagist.org/packages/dgvai/laravel-user-review)
+[![Latest Unstable Version](https://poser.pugx.org/dgvai/laravel-user-review/v/unstable)](https://packagist.org/packages/dgvai/laravel-user-review)
+[![License](https://poser.pugx.org/dgvai/laravel-user-review/license)](https://packagist.org/packages/dgvai/laravel-user-review)
+
+This package uses a trait for a model which can be reviewable by users and give starred/point ratings and only one reply can come from admin as a support response. (like Google playstore review system). This package can be used with any projects like Ecommerce, Shop, Store, etc models. 
 
 > Author: **Jalal Uddin** [Github](https://github.com/dgvai-git) | [Linked-in](https://linkedin.com/in/dgvai) | [Facebook](https://facebook.com/dgvai.hridoy)
 

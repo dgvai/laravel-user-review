@@ -20,13 +20,17 @@ This package uses a trait for a model which can be reviewable by users and give 
 `` composer require dgvai/laravel-user-review``
 
 ## Configurations
-> Export the migration
+> Export the assets (migration and config)
 
-``php artisan vendor:publish --provider="DGvai\Review\ReviewerServiceProvider" --tag=migrations``
+``php artisan vendor:publish --provider="DGvai\Review\ReviewerServiceProvider" ``
 
 > Run the migration
 
 ``php artisan migrate``
+
+> Clear configuration cache
+
+``php artisan config:cache``
 
 ## Usage
 Add ``Reviewable`` trait to the model where you want users to give review and ratings. As example for **Product Model** 
@@ -78,6 +82,10 @@ $product->rating_percent;
 
 /*
     NOTE: THIS PERCENTAGE IS BASED ON 5 STAR RATING, IF YOU WANT CUSTOM STAR, USE BELLOW
+    This is configured via the config file comes with this package: user-review.php
+    You can also set environment variable for your systems default star count
+
+    (.env)  SYSTEM_RATING_STAR_COUNT=5 
 */
 $product->averageRating(10);    //percentage for 10 starrted model
 
@@ -85,16 +93,18 @@ $product->averageRating(10);    //percentage for 10 starrted model
 $product->userRating($user);
 
 // Get all reviews of all products
-$reviews = DGvai\Review\Review::all();              \\ all reviews
-$reviews = DGvai\Review\Review::active()->get();    \\ all active reviews
-$reviews = DGvai\Review\Review::inactive()->get();  \\ all inactive reviews
+$reviews = DGvai\Review\Review::all();              // all reviews
+$reviews = DGvai\Review\Review::active()->get();    // all active reviews
+$reviews = DGvai\Review\Review::inactive()->get();  // all inactive reviews
 
 // this $review has parameters:
 
 $review = $reviews->first();
-$review->model;     /* returns the model object of the traited model, in our case it is product, so $review->model->name with return the 
-                        name field of the model.
-                    */
+                    // =======================
+                    //    returns the model object of the traited model, in our case it is product, 
+$review->model;     //    so $review->model->name with return the 
+                    //    name field of the model.
+                    // =========================
 
 // reply a review by admin:
 $review->reply('Thanks for being with us!');

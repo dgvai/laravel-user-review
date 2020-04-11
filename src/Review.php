@@ -26,6 +26,11 @@ class Review extends Model
         return $this->belongsTo($userClassName);
     }
 
+    public function getReviewTextAttribute()
+    {
+        return (is_null($this->review)) ? 'User gave '.$this->rating.' star!' : $this->review;
+    }
+
     public function scopeActive($query)
     {
         return $query->where('active',1);
@@ -50,7 +55,12 @@ class Review extends Model
 
     public function makeInactive()
     {
-        $this->active = true;
+        $this->active = false;
         return $this->save();
+    }
+
+    public function hasReply()
+    {
+        return is_null($this->reply) ? false : true;
     }
 }

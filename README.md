@@ -80,31 +80,67 @@ $product->rating;
 // Get percentage review count (average)
 $product->rating_percent;
 
-/*
-    NOTE: THIS PERCENTAGE IS BASED ON 5 STAR RATING, IF YOU WANT CUSTOM STAR, USE BELLOW
-    This is configured via the config file comes with this package: user-review.php
-    You can also set environment variable for your systems default star count
-
-    (.env)  SYSTEM_RATING_STAR_COUNT=5 
+/**
+*   NOTE: THIS PERCENTAGE IS BASED ON 5 STAR RATING, IF YOU WANT CUSTOM STAR, USE BELLOW
+*   This is configured via the config file comes with this package: user-review.php
+*   You can also set environment variable for your systems default star count
+*
+*   (.env)  SYSTEM_RATING_STAR_COUNT=5 
 */
+
 $product->averageRating(10);    //percentage for 10 starrted model
 
 // Get rating given to the product by a user:
 $product->userRating($user);
+
+/**
+ *  Get Filtered Review
+ *  Like, get only reviews that has been given 4 stars!
+ * 
+*/
+
+$product->filter(4);
+
+/**
+ * Get it's percentage, which can be shown in the progress bar!
+ * */ 
+$product->filteredPercentage(4);      // ex: output: 75 
+
+
+/**
+ *  PULLING OUT REVIEWS
+ *  There are several ways you can
+ *  pull out reviews of products
+*/
 
 // Get all reviews of all products
 $reviews = DGvai\Review\Review::all();              // all reviews
 $reviews = DGvai\Review\Review::active()->get();    // all active reviews
 $reviews = DGvai\Review\Review::inactive()->get();  // all inactive reviews
 
-// this $review has parameters:
+// Get reviews of a product
+$product->reviews();
 
+
+/**
+ *  $reviews has some attributes
+ *  Let's assume we are taking the first review
+*/
 $review = $reviews->first();
-                    // =======================
-                    //    returns the model object of the traited model, in our case it is product, 
-$review->model;     //    so $review->model->name with return the 
-                    //    name field of the model.
-                    // =========================
+
+/**
+ *  This the model object of the traited model
+ *  In our case it is product
+ * 
+*/
+
+$review->model;     //  so $review->model->name with return the $product->name
+
+// Get review text
+$review->review_text;
+
+// Get review reply
+$review->reply;
 
 // reply a review by admin:
 $review->reply('Thanks for being with us!');

@@ -48,4 +48,16 @@ trait Reviewable
     {
         return $this->averageRating(config('user-review.star'));
     }
+
+    public function filter(int $rating)
+    {
+        return $this->reviews()->where('active',1)->where('rating',$rating)->get();
+    }
+
+    public function filteredPercentage(int $rating)
+    {
+        $count = $this->reviews()->where('active',1)->where('rating',$rating)->count();
+        $total = $this->reviews()->where('active',1)->count();
+        return ($total == 0) ? 0 : ($count/$total) * 100;
+    }
 }

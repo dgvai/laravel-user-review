@@ -11,5 +11,21 @@
         |
         */
 
-        'star' => env('SYSTEM_RATING_STAR_COUNT', 5)
+        'star' => env('SYSTEM_RATING_STAR_COUNT', 5),
+
+        /*
+        |--------------------------------------------------------------------------
+        | DEFAULT FAKE STAR
+        |--------------------------------------------------------------------------
+        | If you want to show fake star by default for 0 ratings product
+        | for your project.
+        | You can set it here.
+        |
+        */
+
+        'fake' => [
+            'enabled' => false,
+            'star' => 5,
+        ]
+        
     ];

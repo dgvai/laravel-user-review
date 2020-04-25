@@ -41,7 +41,11 @@ trait Reviewable
 
     public function getRatingAttribute()
     {
-        return $this->averageRating();
+        return ($this->averageRating() == 0)
+                ? config('user-review.fake.enable') 
+                    ? config('user-review.fake.star')
+                    : $this->averageRating()
+                : $this->averageRating();
     }
 
     public function getRatingPercentAttribute()

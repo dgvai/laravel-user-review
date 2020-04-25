@@ -33,12 +33,35 @@ class Review extends Model
 
     public function scopeActive($query)
     {
-        return $query->where('active',1);
+        return $query->where('active',1)->orderBy('id','desc');
     }
 
     public function scopeInactive($query)
     {
-        return $query->where('active',0);
+        return $query->where('active',0)->orderBy('id','desc');
+    }
+
+    public function scopeDaily($query)
+    {
+        return $query->whereDate('created_at',Carbon::now()->toDateString())->orderBy('id','desc');
+    }
+
+    public function scopeMonthly($query)
+    {
+        return $query->whereMonth('created_at',Carbon::now()->format('m'))->orderBy('id','desc');
+    }
+
+    public function scopeYearly($query)
+    {
+        return $query->whereYear('created_at',Carbon::now()->format('Y'))->orderBy('id','desc');
+    }
+
+    public function scopeFilter($query,$start,$end)
+    {
+        $st = Carbon::parse($start)->startOfDay();
+        $en = Carbon::parse($end)->endOfDay();
+
+        return $query->whereBetween('created_at',[$st,$en])->orderBy('id','desc');
     }
 
     public function reply($reply)

@@ -66,11 +66,7 @@ class Product extends Model
 ```php
     $product = Product::find($id);
     $user = auth()->user();
-    
-    /**
-     *  makeReview($user, $rating [,$review])
-     * 
-     **/
+
     $product->makeReview($user,3,'Very good product!');
 ```
 
@@ -146,6 +142,7 @@ class Product extends Model
     */
 
     $review->model;     //  so $review->model->name with return the $product->name
+    $review->user;      //  return User model that reviewed the model
 
     // Get review text
     $review->review_text;

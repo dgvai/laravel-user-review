@@ -2,6 +2,7 @@
 namespace DGvai\Review;
 
 use Config;
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
 
 class Review extends Model

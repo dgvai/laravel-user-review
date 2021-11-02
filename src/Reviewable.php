@@ -27,7 +27,7 @@ trait Reviewable
 
     public function userRating($user)
     {
-        return $this->ratings()->where('active',1)->where('user_id', $user->id)->avg('rating');
+        return $this->reviews()->where('active',1)->where('user_id', $user->id)->avg('rating');
     }
 
     public function makeReview($user, $rating, $review=null)

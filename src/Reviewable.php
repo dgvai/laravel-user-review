@@ -38,6 +38,18 @@ trait Reviewable
             'user_id' => $user->id
         ]);
     }
+    
+    public function makeOrUpdateReview($user, $rating, $review=null)
+    {
+        $criteria = ["user_id" => $user->id];
+        $payLoad = [
+            'review' => $review,
+            'rating' => $rating,
+            'user_id' => $user->id
+        ];
+        $review = $this->reviews()->updateOrCreate($criteria, $payLoad);
+        return $review;
+    }
 
     public function getRatingAttribute()
     {

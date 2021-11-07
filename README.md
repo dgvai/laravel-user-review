@@ -67,7 +67,11 @@ class Product extends Model
     $product = Product::find($id);
     $user = auth()->user();
 
+    //user makes new Review 
     $product->makeReview($user,3,'Very good product!');
+    
+    //user updates their Review on this product or makes a new review if doesn't have any.
+    $product->makeOrUpdateReview($user,3,'Very good product!');
 ```
 
 ### Review attributes

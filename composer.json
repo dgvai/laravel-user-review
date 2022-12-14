@@ -11,8 +11,8 @@
     ],
     "minimum-stability": "stable",
     "require": {
-        "php": "^7.2",
-        "laravel/framework": "^6.20.26|^7.30.4|^8.40"
+        "php": "^8.0",
+        "laravel/framework": "^8.40"
     },
     "autoload": {
         "psr-4": {
